@@ -71,7 +71,6 @@
             toolStrip1.Size = new Size(984, 25);
             toolStrip1.TabIndex = 0;
             toolStrip1.Text = "toolStrip1";
-            toolStrip1.ItemClicked += toolStrip1_ItemClicked;
             // 
             // toolStripButtonOpen
             // 
@@ -210,7 +209,6 @@
             label6.Size = new Size(103, 15);
             label6.TabIndex = 0;
             label6.Text = "Hloubka zanoření:";
-            label6.Click += label6_Click;
             // 
             // groupBoxFileInfo
             // 
@@ -232,7 +230,6 @@
             groupBoxFileInfo.TabIndex = 0;
             groupBoxFileInfo.TabStop = false;
             groupBoxFileInfo.Text = "Informace o souboru";
-            groupBoxFileInfo.Enter += groupBoxFileInfo_Enter;
             // 
             // labelMaxDepth
             // 
@@ -261,7 +258,6 @@
             labelMaxChildren.Name = "labelMaxChildren";
             labelMaxChildren.Size = new Size(400, 15);
             labelMaxChildren.TabIndex = 5;
-            labelMaxChildren.Click += labelMaxChildren_Click;
             // 
             // labelFileName
             // 
