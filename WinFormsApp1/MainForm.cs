@@ -1,20 +1,26 @@
-namespace WinFormsApp1
-{
+using System.Xml.Linq;
+
+namespace XmlTreeEditor {
     public partial class MainForm : Form {
+        // Current loaded XML document
+        private XDocument? currentXmlDocument = null;
+
+        // Path to the currently loaded file
+        private string? currentFilePath = null;
+
         public MainForm() {
             InitializeComponent();
         }
 
-        private void toolStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e) {
+        private void toolStripButtonOpen_Click(object sender, EventArgs e) {
+            using (OpenFileDialog openFileDialog = new OpenFileDialog()) {
+                openFileDialog.Filter = "XML soubory (*.xml)|*.xml|Všechny soubory (*.*)|*.*";
+                openFileDialog.Title = "Vyberte XML soubor";
 
-        }
-
-        private void groupBoxFileInfo_Enter(object sender, EventArgs e) {
-
-        }
-
-        private void label6_Click(object sender, EventArgs e) {
-
+                if (openFileDialog.ShowDialog() == DialogResult.OK) {
+                    LoadXmlFile(openFileDialog.FileName);
+                }
+            }
         }
     }
 }

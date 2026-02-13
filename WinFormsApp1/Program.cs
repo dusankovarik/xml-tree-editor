@@ -1,5 +1,4 @@
-namespace WinFormsApp1
-{
+namespace XmlTreeEditor {
     internal static class Program
     {
         /// <summary>
