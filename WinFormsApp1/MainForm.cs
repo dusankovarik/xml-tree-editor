@@ -261,5 +261,12 @@ namespace XmlTreeEditor {
                 UpdateElementNamesFromTreeView(childNode);
             }
         }
+
+        /// <summary>
+        /// Event handler for "Close" button click
+        /// </summary>
+        private void toolStripButtonClose_Click(object sender, EventArgs e) {
+            ClearAll();
+        }
     }
 }

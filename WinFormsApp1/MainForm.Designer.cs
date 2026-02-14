@@ -100,6 +100,7 @@
             toolStripButtonClose.Name = "toolStripButtonClose";
             toolStripButtonClose.Size = new Size(41, 22);
             toolStripButtonClose.Text = "Zavřít";
+            toolStripButtonClose.Click += toolStripButtonClose_Click;
             // 
             // splitContainerMain
             // 
