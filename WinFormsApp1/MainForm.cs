@@ -145,5 +145,121 @@ namespace XmlTreeEditor {
             labelMinAttributes.Text = info.MinAttributes.ToString();
             labelMaxAttributes.Text = info.MaxAttributes.ToString();
         }
+
+        /// <summary>
+        /// Event handler for TreeView node selection
+        /// </summary>
+        private void treeViewXml_AfterSelect(object sender, TreeViewEventArgs e) {
+            if (e.Node?.Tag is XElement element) {
+                DisplayElementInfo(element);
+            }
+        }
+
+        /// <summary>
+        /// Displays information about the selected XML element
+        /// </summary>
+        /// <param name="element">XML element</param>
+
+        private void DisplayElementInfo(XElement element) {
+            // Create instance - information is calculated in constructor
+            XmlElementInfo info = new XmlElementInfo(element);
+
+            // Display in depth
+            labelElementDepth.Text = info.Depth.ToString();
+
+            // Display position among siblings
+            labelElementPosition.Text = info.PositionAmongSiblings.ToString();
+
+            // Display attributes
+            if (info.Attributes.Count > 0) {
+                var attributeLines = info.Attributes.Select(kvp => $"{kvp.Key}=\"{kvp.Value}\"");
+                labelElementAttributes.Text = string.Join("\n", attributeLines);
+            }
+            else {
+                labelElementAttributes.Text = "(žádné atributy)";
+            }
+
+            // Display text content
+            if (!string.IsNullOrEmpty(info.Text)) {
+                labelElementText.Text = info.Text;
+            }
+            else {
+                labelElementText.Text = "(žádný text)";
+            }
+        }
+
+        /// <summary>
+        /// Event handler for "Save" button click
+        /// </summary>
+        private void toolStripButtonSave_Click(object sender, EventArgs e) {
+            if (currentXmlDocument?.Root == null) {
+                MessageBox.Show(
+                    "Není naèten žádný XML soubor.",
+                    "Nelze uložit",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+                return;
+            }
+
+            using (SaveFileDialog saveFileDialog = new SaveFileDialog()) {
+                saveFileDialog.Filter = "XML soubory (*.xml)|*.xml|Všechny soubory (*.*)|*.*";
+                saveFileDialog.Title = "Uložit XML soubor";
+                saveFileDialog.FileName = Path.GetFileName(currentFilePath ?? "dokument.xml");
+
+                if (saveFileDialog.ShowDialog() == DialogResult.OK) {
+                    SaveXmlFile(saveFileDialog.FileName);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Saves the XML document with updated element names from TreeView
+        /// </summary>
+        /// <param name="filePath">File path</param>
+        private void SaveXmlFile(string filePath) {
+            try {
+                if (currentXmlDocument?.Root == null || treeViewXml.Nodes.Count == 0) {
+                    return; // No document to save
+                }
+
+                // Update element names from TreeView to XDocument
+                TreeNode rootNode = treeViewXml.Nodes[0];
+                UpdateElementNamesFromTreeView(rootNode);
+
+                // Save to file
+                currentXmlDocument.Save(filePath);
+
+                MessageBox.Show(
+                    "Soubor byl úspìšnì uložen.",
+                    "Uloženo",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+            }
+            catch (Exception ex) {
+                MessageBox.Show(
+                    $"Chyba pøi ukládání souboru:\n{ex.Message}",
+                    "Chyba ukládání XML",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            }
+        }
+
+        /// <summary>
+        /// Recursively updates element names in XDocument based on TreeView node names
+        /// </summary>
+        /// <param name="node">Current TreeView node</param>
+        private void UpdateElementNamesFromTreeView(TreeNode node) {
+            if (node.Tag is XElement element) {
+                // Update element name if it was changed in TreeView
+                if (element.Name.LocalName != node.Text) {
+                    element.Name = node.Text;
+                }
+            }
+
+            // Recursively process child nodes
+            foreach (TreeNode childNode in node.Nodes) {
+                UpdateElementNamesFromTreeView(childNode);
+            }
+        }
     }
 }

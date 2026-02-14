@@ -90,6 +90,7 @@
             toolStripButtonSave.Name = "toolStripButtonSave";
             toolStripButtonSave.Size = new Size(41, 22);
             toolStripButtonSave.Text = "Uložit";
+            toolStripButtonSave.Click += toolStripButtonSave_Click;
             // 
             // toolStripButtonClose
             // 
@@ -126,6 +127,7 @@
             treeViewXml.Name = "treeViewXml";
             treeViewXml.Size = new Size(380, 636);
             treeViewXml.TabIndex = 0;
+            treeViewXml.AfterSelect += treeViewXml_AfterSelect;
             // 
             // groupBoxElementInfo
             // 
