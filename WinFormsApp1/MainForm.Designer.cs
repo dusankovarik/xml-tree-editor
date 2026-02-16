@@ -146,7 +146,7 @@
             groupBoxElementInfo.Location = new Point(0, 180);
             groupBoxElementInfo.Name = "groupBoxElementInfo";
             groupBoxElementInfo.Padding = new Padding(10);
-            groupBoxElementInfo.Size = new Size(600, 250);
+            groupBoxElementInfo.Size = new Size(600, 390);
             groupBoxElementInfo.TabIndex = 1;
             groupBoxElementInfo.TabStop = false;
             groupBoxElementInfo.Text = "Informace o vybraném elementu";
@@ -154,16 +154,16 @@
             // labelElementText
             // 
             labelElementText.Font = new Font("Segoe UI", 9F);
-            labelElementText.Location = new Point(10, 195);
+            labelElementText.Location = new Point(10, 285);
             labelElementText.Name = "labelElementText";
-            labelElementText.Size = new Size(550, 40);
+            labelElementText.Size = new Size(550, 150);
             labelElementText.TabIndex = 7;
             // 
             // label12
             // 
             label12.AutoSize = true;
             label12.Font = new Font("Segoe UI", 9F);
-            label12.Location = new Point(10, 170);
+            label12.Location = new Point(10, 260);
             label12.Name = "label12";
             label12.Size = new Size(31, 15);
             label12.TabIndex = 6;
@@ -174,7 +174,7 @@
             labelElementAttributes.Font = new Font("Segoe UI", 9F);
             labelElementAttributes.Location = new Point(10, 100);
             labelElementAttributes.Name = "labelElementAttributes";
-            labelElementAttributes.Size = new Size(550, 60);
+            labelElementAttributes.Size = new Size(550, 150);
             labelElementAttributes.TabIndex = 5;
             // 
             // label10
