@@ -330,5 +330,20 @@ namespace XmlTreeEditor {
             }
             return bitmap;
         }
+
+        private void treeViewXml_AfterLabelEdit(object sender, NodeLabelEditEventArgs e) {
+            // Check if new label is null or empty (user cancelled or deleted text)
+            if (string.IsNullOrWhiteSpace(e.Label)) {
+                //Cancel edit and revert to old label
+                e.CancelEdit = true;
+
+                // Show warning to user
+                MessageBox.Show(
+                    "Název elementu nemùže být prázdný.",
+                    "Neplatný název",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+            }
+        }
     }
 }

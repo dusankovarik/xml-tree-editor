@@ -128,6 +128,7 @@
             treeViewXml.Name = "treeViewXml";
             treeViewXml.Size = new Size(380, 636);
             treeViewXml.TabIndex = 0;
+            treeViewXml.AfterLabelEdit += treeViewXml_AfterLabelEdit;
             treeViewXml.AfterSelect += treeViewXml_AfterSelect;
             // 
             // groupBoxElementInfo
@@ -141,6 +142,7 @@
             groupBoxElementInfo.Controls.Add(labelElementDepth);
             groupBoxElementInfo.Controls.Add(label6);
             groupBoxElementInfo.Dock = DockStyle.Top;
+            groupBoxElementInfo.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             groupBoxElementInfo.Location = new Point(0, 180);
             groupBoxElementInfo.Name = "groupBoxElementInfo";
             groupBoxElementInfo.Padding = new Padding(10);
@@ -151,6 +153,7 @@
             // 
             // labelElementText
             // 
+            labelElementText.Font = new Font("Segoe UI", 9F);
             labelElementText.Location = new Point(10, 195);
             labelElementText.Name = "labelElementText";
             labelElementText.Size = new Size(550, 40);
@@ -159,6 +162,7 @@
             // label12
             // 
             label12.AutoSize = true;
+            label12.Font = new Font("Segoe UI", 9F);
             label12.Location = new Point(10, 170);
             label12.Name = "label12";
             label12.Size = new Size(31, 15);
@@ -167,6 +171,7 @@
             // 
             // labelElementAttributes
             // 
+            labelElementAttributes.Font = new Font("Segoe UI", 9F);
             labelElementAttributes.Location = new Point(10, 100);
             labelElementAttributes.Name = "labelElementAttributes";
             labelElementAttributes.Size = new Size(550, 60);
@@ -175,6 +180,7 @@
             // label10
             // 
             label10.AutoSize = true;
+            label10.Font = new Font("Segoe UI", 9F);
             label10.Location = new Point(10, 75);
             label10.Name = "label10";
             label10.Size = new Size(53, 15);
@@ -183,6 +189,7 @@
             // 
             // labelElementPosition
             // 
+            labelElementPosition.Font = new Font("Segoe UI", 9F);
             labelElementPosition.Location = new Point(150, 50);
             labelElementPosition.Name = "labelElementPosition";
             labelElementPosition.Size = new Size(400, 15);
@@ -191,6 +198,7 @@
             // label8
             // 
             label8.AutoSize = true;
+            label8.Font = new Font("Segoe UI", 9F);
             label8.Location = new Point(10, 50);
             label8.Name = "label8";
             label8.Size = new Size(132, 15);
@@ -199,6 +207,7 @@
             // 
             // labelElementDepth
             // 
+            labelElementDepth.Font = new Font("Segoe UI", 9F);
             labelElementDepth.Location = new Point(150, 25);
             labelElementDepth.Name = "labelElementDepth";
             labelElementDepth.Size = new Size(400, 15);
@@ -207,6 +216,7 @@
             // label6
             // 
             label6.AutoSize = true;
+            label6.Font = new Font("Segoe UI", 9F);
             label6.Location = new Point(10, 25);
             label6.Name = "label6";
             label6.Size = new Size(103, 15);
@@ -226,6 +236,7 @@
             groupBoxFileInfo.Controls.Add(label2);
             groupBoxFileInfo.Controls.Add(label1);
             groupBoxFileInfo.Dock = DockStyle.Top;
+            groupBoxFileInfo.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             groupBoxFileInfo.Location = new Point(0, 0);
             groupBoxFileInfo.Name = "groupBoxFileInfo";
             groupBoxFileInfo.Padding = new Padding(10);
@@ -236,6 +247,7 @@
             // 
             // labelMaxDepth
             // 
+            labelMaxDepth.Font = new Font("Segoe UI", 9F);
             labelMaxDepth.Location = new Point(150, 50);
             labelMaxDepth.Name = "labelMaxDepth";
             labelMaxDepth.Size = new Size(400, 15);
@@ -243,6 +255,7 @@
             // 
             // labelMaxAttributes
             // 
+            labelMaxAttributes.Font = new Font("Segoe UI", 9F);
             labelMaxAttributes.Location = new Point(150, 125);
             labelMaxAttributes.Name = "labelMaxAttributes";
             labelMaxAttributes.Size = new Size(400, 15);
@@ -250,6 +263,7 @@
             // 
             // labelMinAttributes
             // 
+            labelMinAttributes.Font = new Font("Segoe UI", 9F);
             labelMinAttributes.Location = new Point(150, 100);
             labelMinAttributes.Name = "labelMinAttributes";
             labelMinAttributes.Size = new Size(400, 15);
@@ -257,6 +271,7 @@
             // 
             // labelMaxChildren
             // 
+            labelMaxChildren.Font = new Font("Segoe UI", 9F);
             labelMaxChildren.Location = new Point(150, 75);
             labelMaxChildren.Name = "labelMaxChildren";
             labelMaxChildren.Size = new Size(400, 15);
@@ -264,6 +279,7 @@
             // 
             // labelFileName
             // 
+            labelFileName.Font = new Font("Segoe UI", 9F);
             labelFileName.Location = new Point(150, 25);
             labelFileName.Name = "labelFileName";
             labelFileName.Size = new Size(400, 15);
@@ -272,6 +288,7 @@
             // label5
             // 
             label5.AutoSize = true;
+            label5.Font = new Font("Segoe UI", 9F);
             label5.Location = new Point(10, 125);
             label5.Name = "label5";
             label5.Size = new Size(113, 15);
@@ -281,6 +298,7 @@
             // label4
             // 
             label4.AutoSize = true;
+            label4.Font = new Font("Segoe UI", 9F);
             label4.Location = new Point(10, 100);
             label4.Name = "label4";
             label4.Size = new Size(112, 15);
@@ -290,6 +308,7 @@
             // label3
             // 
             label3.AutoSize = true;
+            label3.Font = new Font("Segoe UI", 9F);
             label3.Location = new Point(10, 75);
             label3.Name = "label3";
             label3.Size = new Size(120, 15);
@@ -299,6 +318,7 @@
             // label2
             // 
             label2.AutoSize = true;
+            label2.Font = new Font("Segoe UI", 9F);
             label2.Location = new Point(10, 50);
             label2.Name = "label2";
             label2.Size = new Size(111, 15);
@@ -308,6 +328,7 @@
             // label1
             // 
             label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 9F);
             label1.Location = new Point(10, 25);
             label1.Name = "label1";
             label1.Size = new Size(89, 15);
