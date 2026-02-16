@@ -65,7 +65,6 @@ namespace XmlTreeEditor {
             return 1 + maxChildDepth; // Current node + max depth of children
         }
 
-
         /// <summary>
         /// Recursively calculates max children count and min/max attribute counts
         /// </summary>

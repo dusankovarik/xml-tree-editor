@@ -14,7 +14,10 @@ namespace XmlTreeEditor {
             = new Dictionary<string, string>();
         public string Text { get; set; } = string.Empty;
 
-
+        /// <summary>
+        /// Creates an instance and calculates statistics from the selected XML element
+        /// </summary>
+        /// <param name="element"></param>
         public XmlElementInfo(XElement element) {
             // Calculate depth
             Depth = CalculateDepth(element);

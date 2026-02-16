@@ -29,7 +29,7 @@ namespace XmlTreeEditor {
         /// <summary>
         /// Loads and processes an XML file
         /// </summary>
-        /// <param name="filePath">File path</param>
+        /// <param name="filePath">Path to XML file</param>
         private void LoadXmlFile(string filePath) {
             try {
                 // Clear previous data
@@ -48,7 +48,8 @@ namespace XmlTreeEditor {
             catch (Exception ex) {
                 // Show error message for invalid XML
                 MessageBox.Show(
-                    $"Chyba pøi naèítání souboru:\n{ex.Message}",
+                    $"Chyba pøi naèítání XML souboru:\n\n{ex.Message}\n\n" +
+                    $"Soubor pravdìpodobnì obsahuje chybnou XML syntaxi.",
                     "Chyba naèítání XML",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
@@ -159,7 +160,6 @@ namespace XmlTreeEditor {
         /// Displays information about the selected XML element
         /// </summary>
         /// <param name="element">XML element</param>
-
         private void DisplayElementInfo(XElement element) {
             // Create instance - information is calculated in constructor
             XmlElementInfo info = new XmlElementInfo(element);
@@ -321,16 +321,15 @@ namespace XmlTreeEditor {
                     // Folded corner
                     g.DrawLine(docPen, 12, 2, 9, 5);
                     g.DrawLine(docPen, 9, 5, 12, 5);
-
-                    // Lines on document
-                    //g.DrawLine(Pens.LightGray, 6, 6, 10, 6);
-                    //g.DrawLine(Pens.LightGray, 6, 8, 10, 8);
-                    //g.DrawLine(Pens.LightGray, 6, 10, 10, 10);
                 }
             }
             return bitmap;
         }
 
+        /// <summary>
+        /// Handles the event that occurs after a TreeView node label is edited.
+        /// Validates that the new label is not empty or whitespace
+        /// </summary>
         private void treeViewXml_AfterLabelEdit(object sender, NodeLabelEditEventArgs e) {
             // Check if new label is null or empty (user cancelled or deleted text)
             if (string.IsNullOrWhiteSpace(e.Label)) {
