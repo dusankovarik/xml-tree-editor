@@ -11,6 +11,7 @@ namespace XmlTreeEditor {
 
         public MainForm() {
             InitializeComponent();
+            SetupTreeViewIcons();
         }
 
         // Event handler for the "Open" button click
@@ -113,10 +114,9 @@ namespace XmlTreeEditor {
             // Check if element has child elements
             bool hasChildElements = element.Elements().Any();
 
-            // Set icon index based on whether node is leaf or branch
-            // 0 = folder icon (has children), 1 = file icon (leaf)
+            // Set icon: folder for branches, file for leaves
             node.ImageIndex = hasChildElements ? 0 : 1;
-            node.SelectedImageIndex = node.ImageIndex;
+            node.SelectedImageIndex = hasChildElements ? 0 : 1;
 
             // Recursively add child elements
             foreach (XElement childElement in element.Elements()) {
@@ -267,6 +267,68 @@ namespace XmlTreeEditor {
         /// </summary>
         private void toolStripButtonClose_Click(object sender, EventArgs e) {
             ClearAll();
+        }
+
+        /// <summary>
+        /// Creates and configures ImageList for TreeView icons
+        /// </summary>
+        private void SetupTreeViewIcons() {
+            ImageList imageList = new ImageList();
+            imageList.ImageSize = new Size(16, 16);
+            imageList.ColorDepth = ColorDepth.Depth32Bit;
+
+            // Icon 0: Folder (just one, not open/closed)
+            imageList.Images.Add(CreateFolderIcon());
+
+            // Icon 1: File
+            imageList.Images.Add(CreateFileIcon());
+
+            treeViewXml.ImageList = imageList;
+        }
+
+        /// <summary>
+        /// Creates a simple folder icon
+        /// </summary>
+        /// <returns>Folder Icon</returns>
+        private Bitmap CreateFolderIcon() {
+            Bitmap bitmap = new Bitmap(16, 16);
+            using (Graphics g = Graphics.FromImage(bitmap)) {
+                // Yellow folder
+                using (Brush folderBrush = new SolidBrush(Color.FromArgb(255, 220, 120)))
+                using (Pen folderPen = new Pen(Color.FromArgb(180, 140, 60))) {
+                    g.FillRectangle(folderBrush, 2, 6, 12, 7);
+                    g.DrawRectangle(folderPen, 2, 6, 12, 7);
+                    g.FillRectangle(folderBrush, 2, 4, 6, 3);
+                }
+            }
+            return bitmap;
+        }
+
+        /// <summary>
+        /// Creates a simple file icon
+        /// </summary>
+        /// <returns>File icon</returns>
+        private Bitmap CreateFileIcon() {
+            Bitmap bitmap = new Bitmap(16, 16);
+            using (Graphics g = Graphics.FromImage(bitmap)) {
+                // White document
+                using (Brush docBrush = Brushes.White)
+                using (Pen docPen = new Pen(Color.Gray)) {
+                    // Main rectangle
+                    g.FillRectangle(docBrush, 4, 2, 8, 12);
+                    g.DrawRectangle(docPen, 4, 2, 8, 12);
+
+                    // Folded corner
+                    g.DrawLine(docPen, 12, 2, 9, 5);
+                    g.DrawLine(docPen, 9, 5, 12, 5);
+
+                    // Lines on document
+                    //g.DrawLine(Pens.LightGray, 6, 6, 10, 6);
+                    //g.DrawLine(Pens.LightGray, 6, 8, 10, 8);
+                    //g.DrawLine(Pens.LightGray, 6, 10, 10, 10);
+                }
+            }
+            return bitmap;
         }
     }
 }
