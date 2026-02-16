@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<library nazev="Městská knihovna" mesto="Praha">
+  <building cislo="1" adresa="Hlavní 123">
+    <oddeleni typ="beletrie" kapacita="5000">
+      <book id="1" isbn="978-80-257-1234-5" dostupna="true">
+        <nazev>Hobit aneb Cesta tam a zase zpátky</nazev>
+        <autor jmeno="J.R.R." prijmeni="Tolkien" />
+        <rok>1937</rok>
+        <zanr>fantasy</zanr>
+        <popis>Příběh o dobrodružství hobita Bilba Pytlíka</popis>
+      </book>
+      <book id="2" isbn="978-80-257-5678-9">
+        <nazev>1984</nazev>
+        <autor jmeno="George" prijmeni="Orwell" />
+        <rok>1949</rok>
+        <zanr>dystopie</zanr>
+      </book>
+      <book id="3" dostupna="false">
+        <nazev>Malý princ</nazev>
+        <autor prijmeni="Saint-Exupéry" />
+        <rok>1943</rok>
+      </book>
+    </oddeleni>
+    <oddeleni typ="naucna">
+      <book id="101">
+        <nazev>Úvod do programování v C#</nazev>
+        <autor prijmeni="Novák" />
+        <rok>2023</rok>
+        <tematicke_oblasti>
+          <oblast>programování</oblast>
+          <oblast>objektově orientované programování</oblast>
+          <oblast>.NET</oblast>
+        </tematicke_oblasti>
+      </book>
+    </oddeleni>
+    <oddeleni typ="casopisy" kapacita="500" archiv="true">
+      <magazine nazev="Programátor" cislo="42" />
+      <magazine nazev="IT News" cislo="15" />
+    </oddeleni>
+  </building>
+  <building cislo="2">
+    <oddeleni typ="detska-literatura">
+      <book id="201" dostupna="true">
+        <nazev>Harry Potter a Kámen mudrců</nazev>
+        <autor jmeno="J.K." prijmeni="Rowling" />
+        <rok>1997</rok>
+      </book>
+    </oddeleni>
+    <studovna kapacita="50">
+      <pocitac id="PC01" />
+      <pocitac id="PC02" />
+    </studovna>
+  </building>
+  <statistics>
+    <celkem_knih>6</celkem_knih>
+    <celkem_budov>2</celkem_budov>
+  </statistics>
+</library>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<obchod nazev="TechShop">
+    <produkty>
+        <produkt id="1" cena="15990" mena="CZK">
+            <nazev>Notebook Dell XPS 13</nazev>
+            <kategorie>elektronika</kategorie>
+            <skladem>true</skladem>
+        </produkt>
+        <produkt id="2">
+            <nazev>Myš Logitech MX Master</nazev>
+            <skladem>false</skladem>
+        </produkt>
+    </produkty>
+</obchod>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<vadny_soubor>
+    <element1>
+        <element2>Text</element2>
+        <!-- Chybí uzavírací tag pro element1 -->
+    <element3>Další obsah</element3>
+</vadny_soubor>
